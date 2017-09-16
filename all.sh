@@ -37,11 +37,10 @@ result=echo $result_newline | tr -d '\n'
 if [ "$result" == "" ]; then
     echo "NONE result!"
 else
-    rm -rf pxy.pac
-    cp pxy.pac.template pxy.pac
-    sed s/REPLACE_ME/$result/ pxy.pac
+    sed -e "s/REPLACE_ME/$result/g" pxy.pac.template > pxy.pac
 fi
-
   
+git push
+
 #clear
 export http_proxy=
