@@ -1,0 +1,107 @@
+import java.util.zip.GZIPInputStream
+
+String htmlAll = "";
+
+// get GZip html file
+def getHtmlTextGzip(url) {
+    try {
+        URLConnection connection = new URL(url).openConnection();                        
+        String html
+        BufferedReader bin = null;
+        connection.setReadTimeout(10000);
+        //The changed part
+        if (connection.getHeaderField("Content-Encoding")!=null && connection.getHeaderField("Content-Encoding").equals("gzip")){
+            bin = new BufferedReader(new InputStreamReader(new GZIPInputStream(connection.getInputStream())));            
+        } else {
+            bin = new BufferedReader(new InputStreamReader(connection.getInputStream()));            
+        }     
+        //End        
+        String inputLine;
+        while ((inputLine = bin.readLine()) != null){
+            html+=inputLine+"\n";
+            }
+        bin.close();
+        //System.out.println(html);
+        //System.exit(0);
+        return html
+    } catch (IOException ex) {
+        //Logger.getLogger(Crawler.class.getName()).log(Level.SEVERE, null, ex);
+        print ex
+        return "";
+    }
+}
+
+// get GZip html file
+def getHtmlText(url) {
+    def zipString = new URL(url).getText(requestProperties: ['User-Agent': 'Mozilla/5.0 (Linux; U; Android 4.1.1; ja-jp; Galaxy Nexus Build/JRO03H) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30'])
+}
+
+htmlAll += getHtmlText('http://www.xicidaili.com/nn/1');
+htmlAll += getHtmlText('http://www.xicidaili.com/nn/2');
+
+print htmlAll.replace(" ","").replace(/\r/,"").replace('<td>',':').replace('</td>\n','')
+
+
+
+
+
+/*import java.util.zip.GZIPInputStream
+import java.util.zip.GZIPOutputStream
+
+def zip(String s){
+	def targetStream = new ByteArrayOutputStream()
+	def zipStream = new GZIPOutputStream(targetStream)
+	zipStream.write(s.getBytes('UTF-8'))
+	zipStream.close()
+	def zippedBytes = targetStream.toByteArray()
+	targetStream.close()
+	return zippedBytes.encodeBase64()
+}
+
+def unzip(String compressed){
+	def inflaterStream = new GZIPInputStream(new ByteArrayInputStream(compressed.decodeBase64()))
+    def uncompressedStr = inflaterStream.getText('UTF-8')
+    return uncompressedStr
+}
+
+def zipString = new URL('http://www.kuaidaili.com/free/').getText(requestProperties: ['User-Agent': 'Mozilla/5.0 (Linux; U; Android 4.1.1; ja-jp; Galaxy Nexus Build/JRO03H) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30'])
+
+String unzippedString = unzip(zipString)
+
+print unzippedString
+*/
+
+/*
+def data = new URL('http://www.cnproxy.com/proxyedu1.html').getText()
+
+def r = data.replace('<SCRIPT type=text/javascript>document.write(":"', ':')
+r = r.replace('+v', '3');
+r = r.replace('+m', '4');
+r = r.replace('+a', '2');
+r = r.replace('+l', '9');
+r = r.replace('+q', '0');
+r = r.replace('+b', '5');
+r = r.replace('+i', '7');
+r = r.replace('+w', 'w');
+r = r.replace('+r', '8');
+r = r.replace('+c', '1');
+
+print r
+
+
+data2 = new URL('http://www.cnproxy.com/proxyedu2.html').getText()
+
+r = data2.replace('<SCRIPT type=text/javascript>document.write(":"', ':')
+r = r.replace('+v', '3');
+r = r.replace('+m', '4');
+r = r.replace('+a', '2');
+r = r.replace('+l', '9');
+r = r.replace('+q', '0');
+r = r.replace('+b', '5');
+r = r.replace('+i', '7');
+r = r.replace('+w', 'w');
+r = r.replace('+r', '8');
+r = r.replace('+c', '1');
+
+print r
+*/
