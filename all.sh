@@ -31,16 +31,18 @@ echo "=======OK========"
 result_newline=`cat list_ok | sed -e 's/^/"PROXY_/g' | sed -e 's/[ ]*$/;"+/g' | sed -e 's/  */:/g' | sed 's/_/ /g'`
 
 echo $result_newline
-result=echo $result_newline | tr -d '\n'
+result=`echo $result_newline | tr -d '\n'`
 
 
 if [ "$result" == "" ]; then
     echo "NONE result!"
 else
     sed -e "s/REPLACE_ME/$result/g" pxy.pac.template > pxy.pac
+    git add pxy.pac
+    git commit -m "update"
+    git push -u origin master
 fi
   
-git push
 
 #clear
 export http_proxy=
