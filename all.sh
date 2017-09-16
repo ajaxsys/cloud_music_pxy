@@ -12,7 +12,7 @@ expect=`cat expect.txt`
 #get ok proxy ( response in 1 second)
 while read p; do
    export http_proxy=http://$p; 
-   resp=$(curl -m 3 music.163.com/song?id=362396); 
+   resp=$(curl -m 2 music.163.com/song?id=362396); 
    if [[ (! $resp =~ .*\<\/html\> ) || ( $resp =~ .*由于版权保.* ) || (! $resp =~ .*日光倾城.* )  ]]; then 
        echo "$p  NG" ;  
    else ( 

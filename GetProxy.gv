@@ -37,7 +37,7 @@ def getHtmlText(url) {
 }
 
 htmlAll += getHtmlText('http://www.xicidaili.com/nn/1');
-htmlAll += getHtmlText('http://www.xicidaili.com/nn/2');
+// htmlAll += getHtmlText('http://www.xicidaili.com/nn/2');
 
 print htmlAll.replace(" ","").replace(/\r/,"").replace('<td>',':').replace('</td>\n','')
 
