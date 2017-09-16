@@ -4,7 +4,8 @@ rm list_proxy
 rm list_may_ok
 rm list_ok
 
-groovy GetProxy.gv | egrep -o '[0-9]+(?:\.[0-9]+){3}:[0-9]+' > list_proxy
+#groovy GetProxy.gv | egrep -o '[0-9]+(?:\.[0-9]+){3}:[0-9]+' > list_proxy
+groovy GetProxy.gv | egrep -o '[0-9]+(?\.[0-9]+){3}:[0-9]+' > list_proxy
 
 expect=`cat expect.txt`
 
