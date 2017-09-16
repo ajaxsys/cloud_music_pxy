@@ -19,7 +19,8 @@ while read p; do
        echo "$p  OK"; 
        echo "$p" >> list_ok;
 
-       echo $resp > $p; 
+       echo $resp > $p;
+       break; 
     )
    fi  
 done <list_proxy
