@@ -10,7 +10,7 @@ var pxyList = (
   
   "").replace(/;$/,"").split(";");
 //var r=Math.floor(Math.random() * pxyList.length);
-var r=0;
+var r=1;
   
 if (host.indexOf("103.211.228.")>-1 || host == "music.163.com" || url.indexOf('music.126.net')>-1 ) 
   return pxyList[r]+";";
