@@ -6,7 +6,7 @@ if (url.indexOf(".mp3")>1 || url.indexOf(".mp4")>1 || url.indexOf(".flv")>1)
 var pxyList = (
   
   
-"PROXY 114.228.14.7:8118;"+ "PROXY 122.237.104.144:80;"+ "PROXY 175.163.253.12:8118;"+ "PROXY 183.189.114.218:80;"+ "PROXY 101.22.49.13:8118;"+ "PROXY 14.112.35.226:8118;"+ "PROXY 116.54.250.210:4370;"+ "PROXY 119.29.158.87:80;"+ "PROXY 221.198.105.220:8118;"+ "PROXY 60.220.16.10:8118;"+
+"PROXY 106.14.241.155:80;"+ "PROXY 118.254.142.42:53281;"+ "PROXY 110.187.91.160:4362;"+
   
   "").replace(/;$/,"").split(";");
 //var r=Math.floor(Math.random() * pxyList.length);
