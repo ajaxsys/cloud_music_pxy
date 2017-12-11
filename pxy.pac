@@ -6,7 +6,7 @@ if (url.indexOf(".mp3")>1 || url.indexOf(".mp4")>1 || url.indexOf(".flv")>1)
 var pxyList = (
   
   
-"PROXY 221.211.221.34:80;"+
+"PROXY 219.138.58.92:3128;"+ "PROXY 182.88.151.24:8118;"+ "PROXY 111.235.158.14:808;"+ "PROXY 175.18.15.28:8118;"+ "PROXY 183.133.75.238:8118;"+ "PROXY 110.73.52.148:8123;"+
   
   "").replace(/;$/,"").split(";");
 //var r=Math.floor(Math.random() * pxyList.length);
