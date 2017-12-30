@@ -9,5 +9,9 @@ function FindProxyForURL(url, host) {
     } else if (host == 'm10.music.126.net') {
         return 'PROXY 125.39.1.27:80';
     }
+    
+    if (host.indexOf("103.211.228.")>-1 || url.indexOf('music.126.net')>-1 ) 		
+        return 'PROXY 125.39.1.27:80';
+    
     return 'DIRECT';
 }
